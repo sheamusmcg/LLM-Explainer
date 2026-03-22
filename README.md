@@ -4,7 +4,7 @@ This app was built to demonstrate core aspects of the https://odsc.ai Engineerin
 
 Try it here: https://llm-explainer.streamlit.app/
 
-An an interactive teaching app that lets you look inside a real language model (DistilGPT-2) as it processes text — from raw input to generated output.
+An interactive teaching app that lets you look inside a real language model (DistilGPT-2) as it processes text — from raw input to generated output.
 
 Built with Streamlit and Hugging Face Transformers.
 
