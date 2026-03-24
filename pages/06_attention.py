@@ -12,6 +12,39 @@ st.write(
     "patterns learned by DistilGPT-2."
 )
 
+# ── The Problem Attention Solves ──────────────────────────────────────────
+st.header("Why Attention? The Problem with RNNs")
+st.write(
+    "Before transformers, language models used **Recurrent Neural Networks (RNNs)** that processed "
+    "text one token at a time, passing a hidden state forward like a game of telephone."
+)
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.markdown("**Sequential**")
+    st.write(
+        "Each token depends on the previous one. A 512-token sequence requires 512 sequential steps. "
+        "GPUs are built for parallelism — RNNs couldn't use it."
+    )
+with col2:
+    st.markdown("**Vanishing Gradients**")
+    st.write(
+        "Gradient signal degrades over long sequences. By token 100, the network has essentially "
+        "\"forgotten\" token 1. Long-range dependencies couldn't be learned."
+    )
+with col3:
+    st.markdown("**Bottleneck**")
+    st.write(
+        "All context must compress into one fixed-size vector. A 10,000-word document had to fit "
+        "the same bottle as a 10-word sentence. Information was lost."
+    )
+
+st.success(
+    "**The attention insight:** Instead of compressing context into one vector, let every token "
+    "look at every other token directly. This is parallelizable, has no bottleneck, and no "
+    "vanishing gradient across positions."
+)
+
 require_inference()
 
 tokens = st.session_state["tokens"]

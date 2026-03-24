@@ -44,6 +44,18 @@ The attention score between two tokens is the dot product of one token's Query w
 another's Key. High scores mean those tokens are relevant to each other. The scores
 are normalized with softmax so they sum to 1, then used to create a weighted combination
 of the Value vectors.
+
+**The formula:**
+
+**Attention(Q, K, V) = softmax(QK^T / √d_k) · V**
+
+- **QK^T**: Dot product of each Query with every Key — produces a matrix of relevance scores
+- **√d_k**: Divide by the square root of the key dimension to prevent scores from growing too large
+- **softmax**: Normalize scores to sum to 1 (turns scores into attention weights)
+- **· V**: Use those weights to create a weighted combination of Value vectors
+
+This is all matrix multiplication — which GPUs are extremely fast at. That's why attention
+can be parallelized while RNNs could not.
 """
 
 QKV_EXPLAINED = """
@@ -63,7 +75,7 @@ while others capture semantic relationships (pronouns and their antecedents).
 MULTIPLE_HEADS = """
 ### Why Multiple Attention Heads?
 
-GPT-2 uses 12 attention heads per layer. Each head independently learns to focus on
+DistilGPT-2 uses 12 attention heads per layer. Each head independently learns to focus on
 different aspects of the input:
 
 - **Head 1** might learn to connect pronouns to their referents
@@ -71,9 +83,13 @@ different aspects of the input:
 - **Head 3** might track punctuation and sentence boundaries
 - **Head 4** might connect verbs to their subjects
 
+The process for each head: **Project** (Q, K, V through separate weight matrices) →
+**Attend** (compute attention scores) → **Concat** (join all head outputs) →
+**Project** (final linear layer back to model dimension).
+
 Having multiple heads lets the model capture many different types of relationships
-simultaneously. The outputs from all heads are concatenated and projected back to
-the model's hidden dimension.
+simultaneously. Larger models use more heads — GPT-3 uses 96 heads per layer across
+96 layers, each operating in a 128-dimensional subspace.
 """
 
 WHAT_ARE_LOGITS = """

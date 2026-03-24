@@ -187,11 +187,19 @@ with st.expander("Encoder vs. Decoder — what's the difference?"):
 
 with st.expander("What are scaling laws?"):
     st.markdown(
-        "Research has shown that model performance improves predictably as you increase model size, "
-        "dataset size, and compute. This is called a **scaling law**.\n\n"
-        "Key insight: both model size and training data should scale together. "
-        "A well-trained small model often beats a poorly trained large one. "
-        "That's why a fine-tuned 7B model can outperform a 70B base model on specific tasks."
+        "Research has shown that model performance improves **predictably** as you increase model size, "
+        "dataset size, and compute — following a mathematical power law. Two key papers:\n\n"
+        "**Kaplan et al. (OpenAI, 2020):** Loss decreases as a power law with model size, dataset "
+        "size, and compute. This meant you could forecast a model's capability before training it. "
+        "This led to GPT-3 (175B parameters) — but it was trained on less data than optimal.\n\n"
+        "**Chinchilla (DeepMind, 2022):** Revised the rules — both model size and training tokens "
+        "should scale equally. For every doubling of parameters, you should also double training data. "
+        "Chinchilla (70B params, 4× more training tokens) matched GPT-3's performance, proving "
+        "GPT-3 was significantly undertrained.\n\n"
+        "**What this means in practice:**\n"
+        "- Bigger doesn't always mean better — a well-trained 7B model often beats an undertrained 70B model\n"
+        "- Fine-tuning a small model on high-quality domain data can outperform a much larger base model\n"
+        "- Every increase in model size increases inference cost — capability and cost are always in tension"
     )
 
 # ── Navigation ───────────────────────────────────────────────────────────
