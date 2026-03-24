@@ -90,4 +90,4 @@ with st.expander("How does Temperature work?"):
     st.markdown(explanations.WHAT_IS_TEMPERATURE)
 
 # ── Navigation ─────────────────────────────────────────────────────────────
-next_step_button("pages/05_generation.py", "Next: Text Generation")
+next_step_button("pages/09_generation.py", "Next: Text Generation")

@@ -8,7 +8,7 @@ def require_tokenized():
     from components.state_manager import is_text_tokenized
     if not is_text_tokenized():
         st.warning("Please tokenize some text first.")
-        st.page_link("pages/02_tokenization.py", label="Go to Tokenization", icon=":material/arrow_back:")
+        st.page_link("pages/04_tokenization.py", label="Go to Tokenization", icon=":material/arrow_back:")
         st.stop()
 
 
@@ -17,7 +17,7 @@ def require_inference():
     from components.state_manager import is_inference_done
     if not is_inference_done():
         st.warning("Please tokenize some text first so the model can run.")
-        st.page_link("pages/02_tokenization.py", label="Go to Tokenization", icon=":material/arrow_back:")
+        st.page_link("pages/04_tokenization.py", label="Go to Tokenization", icon=":material/arrow_back:")
         st.stop()
 
 

@@ -103,4 +103,4 @@ with st.expander("Why multiple heads?"):
     st.markdown(explanations.MULTIPLE_HEADS)
 
 # ── Navigation ─────────────────────────────────────────────────────────────
-next_step_button("pages/04_output.py", "Next: Output & Probabilities")
+next_step_button("pages/07_transformer_block.py", "Next: The Transformer Block")

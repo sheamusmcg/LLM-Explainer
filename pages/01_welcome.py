@@ -5,8 +5,8 @@ st.write("*An interactive, visual guide to how Large Language Models work — us
 
 st.write(
     "This tool lets you see inside a real transformer model (DistilGPT-2) as it processes "
-    "text. You'll watch how text gets converted to numbers, how the model pays attention to "
-    "different words, and how it predicts the next word. No coding required."
+    "text. You'll start with the fundamentals of neural networks, then work through each "
+    "stage of the transformer pipeline — from tokens to generated text. No coding required."
 )
 
 # ── Pipeline Overview ──────────────────────────────────────────────────────
@@ -19,7 +19,7 @@ with col1:
     st.write("Split text into small pieces called tokens")
 with col2:
     st.markdown("### 2. Embed")
-    st.write("Convert each token into a vector of numbers")
+    st.write("Convert each token into a vector of numbers with position info")
 with col3:
     st.markdown("### 3. Attend")
     st.write("Figure out which tokens relate to each other")
@@ -33,15 +33,26 @@ with col5:
 # ── What You'll Learn ─────────────────────────────────────────────────────
 st.header("What You'll Learn")
 st.write(
+    "- How **neurons, weights, and training** work — the building blocks of all neural networks\n"
+    "- How **activation functions** (ReLU, GELU, Softmax) add the non-linearity that makes learning possible\n"
     "- How text is **tokenized** into subword pieces using Byte-Pair Encoding\n"
+    "- How tokens become **embeddings** — vectors of numbers — and how position is encoded\n"
     "- How **self-attention** lets the model understand relationships between words\n"
+    "- How the **transformer block** combines attention, feed-forward networks, and residual connections\n"
     "- How the model produces a **probability distribution** over its vocabulary\n"
-    "- How **temperature**, **top-k**, and **top-p** control text generation\n"
-    "- How tokens are generated **one at a time** in an autoregressive loop"
+    "- How **temperature**, **top-k**, and **top-p** control text generation"
 )
 
 # ── Key Terms ─────────────────────────────────────────────────────────────
 st.header("Key Terms")
+
+with st.expander("What is a Neural Network?"):
+    st.write(
+        "A **neural network** is a function that learns to map inputs to outputs by adjusting "
+        "millions of numbers called weights. It's made up of layers of simple units (neurons) "
+        "that each compute a weighted sum of their inputs and apply an activation function. "
+        "Every LLM is a neural network — just a very large, specialized one."
+    )
 
 with st.expander("What is a Transformer?"):
     st.write(
@@ -93,4 +104,4 @@ st.info(
 
 # ── Get Started ───────────────────────────────────────────────────────────
 st.divider()
-st.page_link("pages/02_tokenization.py", label="Get Started: Tokenization", icon=":material/arrow_forward:")
+st.page_link("pages/02_neural_networks.py", label="Get Started: Neural Network Foundations", icon=":material/arrow_forward:")

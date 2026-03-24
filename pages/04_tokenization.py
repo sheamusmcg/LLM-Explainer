@@ -90,4 +90,4 @@ with st.expander("Why not just use whole words?"):
     st.markdown(explanations.WHY_SUBWORDS)
 
 # ── Navigation ─────────────────────────────────────────────────────────────
-next_step_button("pages/03_attention.py", "Next: Attention")
+next_step_button("pages/05_embeddings.py", "Next: Embeddings & Position")
